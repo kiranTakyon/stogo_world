@@ -5,7 +5,7 @@ import 'package:stogo_play/main_app/utils/theme.dart';
 
 import 'constants/app_constants.dart';
 import 'reusables/colors.dart';
-import 'routes/app_reoutes.dart';
+import 'routes/app_routes.dart';
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});

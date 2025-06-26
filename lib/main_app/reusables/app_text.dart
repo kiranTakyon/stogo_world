@@ -38,14 +38,16 @@ class AppText extends StatelessWidget {
       style:
           textStyle ??
           TextStyle(
-            fontSize: fontSize ?? 15,
-            fontWeight: fontWeight ?? FontWeight.w400,
             color: color ?? white,
-            decoration: isLink ? TextDecoration.underline : TextDecoration.none,
-            decorationColor: isLink ? Colors.blue : Colors.transparent,
-            decorationThickness: isLink ? 2 : 0,
+            fontFamily: fontFamily,
+            fontSize: fontSize ?? 15,
             wordSpacing: wordSpacing,
+            decorationThickness: isLink ? 2 : 0,
+            fontWeight: fontWeight ?? FontWeight.w400,
+            decorationColor: isLink ? blue : transparent,
+            decoration: isLink ? TextDecoration.underline : TextDecoration.none,
           ),
+
       overflow: overflow,
       maxLines: maxLines,
       textScaler: _shouldApplyFixedScaler(context) ? const TextScaler.linear(1.0) : MediaQuery.textScalerOf(context),

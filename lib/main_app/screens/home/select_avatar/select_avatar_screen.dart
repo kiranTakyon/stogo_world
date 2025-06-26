@@ -2,8 +2,9 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../constants/app_lists.dart';
 import '../../../constants/asset_resources.dart';
-import '../../../controller/home_screen_controller.dart';
+import '../../../controller/select_avatar_controller.dart';
 import '../../../reusables/app_text.dart';
 import '../../../reusables/colors.dart';
 import '../../../reusables/sized_box.dart';
@@ -16,22 +17,14 @@ class SelectAvatarScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
 
-    final List<String> avatars = [
-      AssetResources.avatar1,
-      AssetResources.avatar2,
-      AssetResources.avatar3,
-      AssetResources.avatar4,
-      AssetResources.avatar5,
-    ];
-
-    final animationController = Get.put(HomeAnimationController());
+    final SelectAvatarController animationController = Get.put(SelectAvatarController());
 
     return Scaffold(
       body: Stack(
         children: [
           Positioned.fill(
             child: Obx(() {
-              final animationValue = animationController.animationValue.value;
+              final double animationValue = animationController.animationValue.value;
 
               return Transform.scale(
                 scale: animationValue,
@@ -77,7 +70,7 @@ class SelectAvatarScreen extends StatelessWidget {
                                 },
                                 child: CircleAvatar(
                                   radius: 28,
-                                  backgroundColor: isSelected ? green : transparent,
+                                  backgroundColor: isSelected ? greenAccent : transparent,
                                   child: CircleAvatar(radius: 24, backgroundImage: AssetImage(avatars[index])),
                                 ),
                               );

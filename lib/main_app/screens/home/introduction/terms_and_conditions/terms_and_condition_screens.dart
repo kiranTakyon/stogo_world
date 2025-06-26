@@ -4,11 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../constants/asset_resources.dart';
+import '../../../../controller/select_avatar_controller.dart';
 import '../../../../reusables/animated_text.dart';
 import '../../../../reusables/buttons.dart';
 import '../../../../reusables/colors.dart';
 import '../../../../reusables/sized_box.dart';
-import '../../../../routes/app_reoutes.dart';
+import '../../../../routes/app_routes.dart';
 
 class TermsAndConditionScreen extends StatelessWidget {
   const TermsAndConditionScreen({super.key});
@@ -16,11 +17,27 @@ class TermsAndConditionScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Size size = getScreenSize(context);
+    final SelectAvatarController animationController = Get.put(SelectAvatarController());
 
     return Scaffold(
       body: Stack(
         children: [
-          Positioned.fill(child: Image.asset(AssetResources.termsAndConditionsBg, fit: BoxFit.cover)),
+          Positioned.fill(
+            child: Obx(() {
+              final double animationValue = animationController.animationValue.value;
+
+              return Transform.scale(
+                scale: animationValue,
+                child: Stack(
+                  fit: StackFit.expand,
+                  children: [
+                    Image.asset(AssetResources.termsAndConditionsBg, fit: BoxFit.cover),
+                    Container(color: black.withAlpha((0.12 * 255).toInt())),
+                  ],
+                ),
+              );
+            }),
+          ),
           Center(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),

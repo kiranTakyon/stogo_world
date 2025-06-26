@@ -7,3 +7,11 @@ final List<String> introductionSubTitles = [
   "The Stogo guardians need your help to save Earth from environmental threats!",
   " Complete missions to increase your Earth Power and unlock new adventures!",
 ];
+
+    final List<String> avatars = [
+      AssetResources.avatar1,
+      AssetResources.avatar2,
+      AssetResources.avatar3,
+      AssetResources.avatar4,
+      AssetResources.avatar5,
+    ];

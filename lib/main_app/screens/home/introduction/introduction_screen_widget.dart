@@ -28,33 +28,34 @@ class IntroductionScreenWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final controller = Get.find<IntroductionController>();
-
+    final IntroductionController controller = Get.put(IntroductionController());
     return Row(
       children: [
         Expanded(
           flex: 1,
-          child: Obx(() {
-            final isActive = controller.currentIndex.value == index;
-            return TweenAnimationBuilder<double>(
-              tween: Tween(begin: 1.0, end: isActive ? 1.3 : 1.0),
-              duration: const Duration(seconds: 2),
-              curve: Curves.easeInOut,
-              builder: (context, scale, child) {
-                return Transform.scale(
-                  scale: scale,
-                  child: AnimatedOpacity(
-                    opacity: 1,
-                    duration: const Duration(milliseconds: 300),
-                    child: Image.asset(image, fit: BoxFit.cover),
-                  ),
-                );
-              },
-            );
-          }),
+          child: Container(
+            height: MediaQuery.of(context).size.height, // Or any fixed height
+            child: Obx(() {
+              final isActive = controller.currentIndex.value == index;
+              return TweenAnimationBuilder<double>(
+                tween: Tween(begin: 1.0, end: isActive ? 1.3 : 1.0),
+                duration: const Duration(seconds: 2),
+                curve: Curves.easeInOut,
+                builder: (context, scale, child) {
+                  return Transform.scale(
+                    scale: scale,
+                    child: AnimatedOpacity(
+                      opacity: 1,
+                      duration: const Duration(milliseconds: 300),
+                      child: SizedBox.expand(child: Image.asset(image, fit: BoxFit.cover)),
+                    ),
+                  );
+                },
+              );
+            }),
+          ),
         ),
 
-        /// ✅ Right side (text, background, dots)
         Expanded(
           flex: 1,
           child: Stack(

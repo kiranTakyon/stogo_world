@@ -4,9 +4,10 @@ import 'dart:developer';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get_storage/get_storage.dart';
 
 import 'main_app/main_app.dart';
-import 'main_app/routes/app_reoutes.dart';
+import 'main_app/routes/app_routes.dart';
 
 //Line length 120
 //Flutter sdk used to develop 3.29.3 🍃
@@ -15,6 +16,7 @@ import 'main_app/routes/app_reoutes.dart';
 void main() {
   runZonedGuarded(
     () async {
+      await GetStorage.init();
       WidgetsFlutterBinding.ensureInitialized();
       await SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
       FlutterError.onError = (FlutterErrorDetails details) {

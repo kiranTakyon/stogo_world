@@ -6,7 +6,7 @@ import '../services/app_services.dart';
 
 class IntroductionController extends GetxController {
   final RxInt currentIndex = 0.obs;
-  late final RxInt totalSlides;
+  RxInt totalSlides = 3.obs;
 
   void setTotalSlides(int value, List<String> images) {
     totalSlides = value.obs;
