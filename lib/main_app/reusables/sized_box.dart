@@ -6,6 +6,8 @@ final SizedBox sh20 = const SizedBox(height: 20);
 final SizedBox sh30 = const SizedBox(height: 30);
 final SizedBox sh40 = const SizedBox(height: 40);
 final SizedBox sh50 = const SizedBox(height: 50);
+final SizedBox sh100 = const SizedBox(height: 100);
+final SizedBox sh200 = const SizedBox(height: 200);
 
 final SizedBox sw5 = const SizedBox(width: 5);
 final SizedBox sw10 = const SizedBox(width: 10);

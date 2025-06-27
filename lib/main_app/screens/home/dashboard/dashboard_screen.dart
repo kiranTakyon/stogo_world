@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -20,21 +21,21 @@ class DashboardScreen extends StatelessWidget {
       body: Obx(() {
         final double animationValue = animationController.animationValue.value;
 
-        return Stack(
-          fit: StackFit.expand,
-          children: [
-            Transform.scale(
-              scale: animationValue,
-              child: Stack(
-                fit: StackFit.expand,
-                children: [
-                  Image.asset(AssetResources.spaceShip, fit: BoxFit.cover),
-                  Container(color: black.withAlpha((0.12 * 255).toInt())),
-                ],
+        return SafeArea(
+          child: Stack(
+            fit: StackFit.expand,
+            children: [
+              Transform.scale(
+                scale: animationValue,
+                child: Stack(
+                  fit: StackFit.expand,
+                  children: [
+                    Image.asset(AssetResources.spaceShip, fit: BoxFit.cover),
+                    Container(color: black.withAlpha((0.12 * 255).toInt())),
+                  ],
+                ),
               ),
-            ),
-            SafeArea(
-              child: Padding(
+              Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Column(
                   children: [
@@ -52,19 +53,63 @@ class DashboardScreen extends StatelessWidget {
                       ],
                     ),
                     sh5,
-                    Row(
-                      spacing: 10,
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [LeaderboardCard(), GlassMissionCard(), LeaderboardCard()],
+                    if (kIsWeb) sh200,
+                    Padding(
+                      padding: const EdgeInsets.only(right: kIsWeb ? 45 : 0),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [Coupon(), GlassMissionCard(), sw5, LeaderboardCard()],
+                      ),
                     ),
                   ],
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         );
       }),
+    );
+  }
+}
+
+class Coupon extends StatelessWidget {
+  const Coupon({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        gradient: const LinearGradient(
+          begin: Alignment.centerLeft,
+          end: Alignment.centerRight,
+          colors: [Color(0xFF7616ba), Color(0xFFe014dd)],
+          stops: [0.0, 1.0],
+        ),
+      ),
+      width: size.width * 0.34,
+      height: kIsWeb ? size.height * 0.3 : size.height * 0.4,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          sw5,
+          Container(
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              gradient: const LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [Color(0xFFb50ec4), Color(0xFF820cb0)],
+                stops: [0.0, 1.0],
+              ),
+            ),
+            width: size.width * 0.3,
+            height: kIsWeb ? size.height * 0.28 : size.height * 0.32,
+          ),
+        ],
+      ),
     );
   }
 }

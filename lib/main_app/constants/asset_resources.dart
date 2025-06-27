@@ -1,7 +1,8 @@
 class AssetResources {
   //svg
-  static const String coin = 'assets/icons/coin.svg';
-  static const String twinkleStar = 'assets/icons/twinkle_star.svg';
+  static const String coinIcon = 'assets/icons/coin.svg';
+  static const String crown = 'assets/icons/crown.svg';
+  static const String twinkleStarIcon = 'assets/icons/twinkle_star.svg';
 
   //png
   static const String intro2 = 'assets/images/intro2.png';

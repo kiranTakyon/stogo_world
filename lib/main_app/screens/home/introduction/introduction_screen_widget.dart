@@ -33,8 +33,9 @@ class IntroductionScreenWidget extends StatelessWidget {
       children: [
         Expanded(
           flex: 1,
-          child: Container(
-            height: MediaQuery.of(context).size.height, // Or any fixed height
+          child: SizedBox(
+            height: MediaQuery.of(context).size.height, 
+            
             child: Obx(() {
               final isActive = controller.currentIndex.value == index;
               return TweenAnimationBuilder<double>(

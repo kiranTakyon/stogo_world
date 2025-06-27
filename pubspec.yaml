@@ -14,9 +14,9 @@ dependencies:
 
   get: 
   just_audio:
+  get_storage: 
+  flutter_svg: 
   cupertino_icons: 
-  get_storage: ^2.1.1
-  flutter_svg: ^2.2.0
 
 dev_dependencies:
   flutter_test:

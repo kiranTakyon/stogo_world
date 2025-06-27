@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
 
+import '../constants/app_constants.dart';
 import 'colors.dart';
 
 class AppText extends StatelessWidget {
   final String text;
-  final double? fontSize;
-  final double? height;
-  final Color? color;
-  final FontWeight? fontWeight;
-  final String? fontFamily;
-  final TextStyle? textStyle;
-  final TextAlign? textAlign;
-  final int? maxLines;
   final bool isLink;
-  final TextOverflow? overflow;
+  final Color? color;
+  final int? maxLines;
+  final double? height;
+  final double? fontSize;
+  final String? fontFamily;
   final double? wordSpacing;
+  final TextAlign? textAlign;
+  final TextStyle? textStyle;
+  final TextOverflow? overflow;
+  final FontWeight? fontWeight;
   const AppText({
     super.key,
     required this.text,
@@ -39,12 +40,12 @@ class AppText extends StatelessWidget {
           textStyle ??
           TextStyle(
             color: color ?? white,
-            fontFamily: fontFamily,
             fontSize: fontSize ?? 15,
             wordSpacing: wordSpacing,
             decorationThickness: isLink ? 2 : 0,
             fontWeight: fontWeight ?? FontWeight.w400,
             decorationColor: isLink ? blue : transparent,
+            fontFamily: fontFamily ?? AppConstants.poppins,
             decoration: isLink ? TextDecoration.underline : TextDecoration.none,
           ),
 
